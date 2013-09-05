@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>[% name %]</title>
+</head>
+<body>
+   <h2>HOME</h2>
+   <br>
+
+   <h3>Login</h3>
+
+    [% error_login = error.for_scope('login') %]
+  
+   <form method="post" action="">
+      <input type="hidden" name="action" value="login">
+      
+      Email: <input type="text" name="email" value="[% email %]" 
+         [% IF error_login && error_login.has_subject('email') %]style="border:1px solid red;"[% END %] >
+      
+      Pass: <input type="password" name="password" value=""
+         [% IF error_login && error_login.has_subject('password') %]style="border:1px solid red;"[% END %] >
+    
+      <button type="submit">Logar</button>
+      [% IF error_login %]
+         <br>
+         [% FOREACH e IN error_login.messages %]
+            [% c.loc(e.msgid) %]<br>
+         [% END %]
+      [% END %]
+   </form>
+
+   <br><br>
+
+
+   [% error_signup = error.for_scope('signup') %]
+
+   <h3>Signup</h3>
+   <form method="post" action="">
+      <input type="hidden" name="action" value="signup">
+      
+      Name: <input type="text" name="user_name" value="[% user_name %]"
+         [% IF error_signup && error_signup.has_subject('user_name') %]style="border:1px solid red;"[% END %] >
+         
+      <br>
+      
+      Email: <input type="text" name="email" value="[% email %]"
+         [% IF error_signup && error_signup.has_subject('email') %]style="border:1px solid red;"[% END %] >
+      
+      <br>
+      
+      Repeat Email: <input type="text" name="email_confirm" value="[% email_confirm %]"
+         [% IF error_signup && error_signup.has_subject('email_confirm') %]style="border:1px solid red;"[% END %] >
+      
+      <br>
+      
+      Password: <input type="password" name="password" value=""
+         [% IF error_signup && error_signup.has_subject('password') %]style="border:1px solid red;"[% END %] >
+   
+   
+      <br>
+      <button type="submit">Sigunp</button>
+      
+       [% IF error_signup %]
+         <br>
+         [% FOREACH e IN error_signup.messages %]
+            [% c.loc(e.msgid) %]<br>
+         [% END %]
+      [% END %]
+      
+      [% IF signup_sucess == 1 %]
+         
+      [% END %]
+   </form>
+   
+</body>
+</html>

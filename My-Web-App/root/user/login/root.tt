@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>[% name %]</title>
+</head>
+<body>
+   <a href="/"><< Home</a>
+   <br>
+
+   <h3>Login</h3>
+
+    [% error_login = error.for_scope('login') %]
+  
+   <form method="post" action="">
+      <input type="hidden" name="action" value="login">
+      
+      Email: <input type="text" name="email" value="[% email %]" 
+         [% IF error_login && error_login.has_subject('email') %]style="border:1px solid red;"[% END %] >
+      
+      Pass: <input type="password" name="password" value=""
+         [% IF error_login && error_login.has_subject('password') %]style="border:1px solid red;"[% END %] >
+    
+      <button type="submit">Logar</button>
+      [% IF error_login %]
+         <br>
+         [% FOREACH e IN error_login.messages %]
+            [% c.loc(e.msgid) %]<br>
+         [% END %]
+      [% END %]
+   </form>
+
+
+</body>
+</head>

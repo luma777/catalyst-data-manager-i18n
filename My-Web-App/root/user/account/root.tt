@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>[% name %]</title>
+</head>
+<body>
+
+<h2> Welcome [% user.user_name %] </h2>
+<br>
+Email: [% user.email %]
+<br>
+<a href="/user/logout">Logout</a>
+
+</body>
+</html>

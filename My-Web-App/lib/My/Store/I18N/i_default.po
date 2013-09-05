@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+
+msgid "missing_email"
+msgstr "O campo email é obrigatório."
+
+msgid "missing_password"
+msgstr "O campo senha é obrigatório."
+
+msgid "user_pass_invalid"
+msgstr "Usuário ou senha inválido."
+
+msgid "missing_user_name"
+msgstr "O campo nome é obrigatório."
+
+msgid "missing_email_confirm"
+msgstr "Confirme seu email."
+
+msgid "invalid_email"
+msgstr "Email inválido."
+
+msgid "invalid_email_confirm"
+msgstr "Email de confirmação inválido."
