@@ -9,13 +9,20 @@ sub base :Chained('/base') CaptureArgs(0) PathPart('user') {}
 
 sub checkauth :Chained('base') CaptureArgs(0) PathPart(''){
    my ($self, $c) = @_;
-   $c->user_exists || $c->res->redirect( '/user/login' );
+   
+   if (!$c->user_exists) {
+       $c->res->redirect( '/user/login' );
+       $c->detach;
+   }
    return 1;
 }
 
 sub noauth :Chained('base') CaptureArgs(0) PathPart(''){
    my ($self, $c) = @_;
-   $c->user_exists && $c->res->redirect( '/user/account' );
+   if ($c->user_exists) {
+       $c->res->redirect( '/user/account' );
+       $c->detach;
+   }
    return 1;
 }
 
